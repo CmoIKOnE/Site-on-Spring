@@ -1,0 +1,188 @@
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                        https://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.4.xsd">
+
+
+    <changeSet id="1.0.0" author="maxim.mamasanov">
+        <createTable tableName="users">
+            <column name="id" type="BIGINT" autoIncrement="true">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+
+            <column name="username" type="VARCHAR(100)">
+                <constraints nullable="false" unique="true"/>
+            </column>
+
+            <column name="email" type="VARCHAR(255)">
+                <constraints nullable="false" unique="true"/>
+            </column>
+
+            <column name="password" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+
+            <column name="rub" type="int" defaultValue="0">
+                <constraints nullable="false"/>
+            </column>
+
+            <column name="onix" type="int" defaultValue="0">
+                <constraints nullable="false"/>
+            </column>
+
+            <column name="created" type="TIMESTAMP" defaultValue="CURRENT_TIMESTAMP()">
+                <constraints nullable="false"/>
+            </column>
+
+            <column name="updated" type="TIMESTAMP" defaultValue="CURRENT_TIMESTAMP()">
+                <constraints nullable="false"/>
+            </column>
+
+            <column name="status" type="VARCHAR(25)" defaultValue="ACTIVE">
+                <constraints nullable="false"/>
+            </column>
+
+        </createTable>
+    </changeSet>
+
+    <changeSet id="1.0.1" author="maxim.mamasanov">
+        <createTable tableName="roles">
+            <column name="id" type="BIGINT" autoIncrement="true">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+
+            <column name="name" type="VARCHAR(100)">
+                <constraints nullable="false" unique="true"/>
+            </column>
+
+            <column name="created" type="TIMESTAMP" defaultValue="CURRENT_TIMESTAMP()">
+                <constraints nullable="false"/>
+            </column>
+
+            <column name="updated" type="TIMESTAMP" defaultValue="CURRENT_TIMESTAMP()">
+                <constraints nullable="false"/>
+            </column>
+
+            <column name="status" type="VARCHAR(25)" defaultValue="ACTIVE">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+
+    <changeSet id="1.0.2" author="maxim.mamasanov">
+        <createTable tableName="shop">
+            <column name="id" type="BIGINT" autoIncrement="true">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+
+            <column name="category" type="VARCHAR(100)" defaultValue="category?">
+                <constraints nullable="false"/>
+            </column>
+
+            <column name="name" type="VARCHAR(100)" defaultValue="Name?">
+                <constraints nullable="false"/>
+            </column>
+
+            <column name="description" type="VARCHAR(1024)" defaultValue="Coming soon">
+                <constraints nullable="false"/>
+            </column>
+
+            <column name="price" type="INT" defaultValue="0">
+                <constraints nullable="false"/>
+            </column>
+
+            <column name="img" type="VARCHAR(1024)" defaultValue="default.png">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+
+    <changeSet id="2.0.1" author="maxim.mamasanov">
+        <createTable tableName="user_roles">
+            <column name="user_id" type="BIGINT">
+            </column>
+
+            <column name="role_id" type="BIGINT">
+            </column>
+        </createTable>
+    </changeSet>
+
+    <changeSet id="2.0.2" author="maxim.mamasanov">
+        <createTable tableName="user_votes">
+            <column name="user_id" type="BIGINT">
+            </column>
+
+            <column name="votes" type="INT" defaultValue="0">
+            </column>
+        </createTable>
+    </changeSet>
+
+    <changeSet id="3.0.1" author="maxim.mamasanov">
+        <addForeignKeyConstraint baseColumnNames="user_id"
+                                 baseTableName="user_votes"
+                                 constraintName="fk_user_votes_user"
+                                 onDelete="CASCADE"
+                                 onUpdate="RESTRICT"
+                                 referencedColumnNames="id"
+                                 referencedTableName="users"/>
+    </changeSet>
+
+    <changeSet id="3.0.2" author="maxim.mamasanov">
+        <addForeignKeyConstraint baseColumnNames="user_id"
+                                 baseTableName="user_roles"
+                                 constraintName="fk_user_roles_user"
+                                 onDelete="CASCADE"
+                                 onUpdate="RESTRICT"
+                                 referencedColumnNames="id"
+                                 referencedTableName="users"/>
+    </changeSet>
+
+    <changeSet id="3.0.3" author="maxim.mamasanov">
+        <addForeignKeyConstraint baseColumnNames="role_id"
+                                 baseTableName="user_roles"
+                                 constraintName="fk_user_roles_roles"
+                                 onDelete="CASCADE"
+                                 onUpdate="RESTRICT"
+                                 referencedColumnNames="id"
+                                 referencedTableName="roles"/>
+    </changeSet>
+
+    <changeSet id="4.0.1" author="maxim.mamasanov">
+        <insert tableName="roles">
+            <column name="name" value="ROLE_USER"/>
+        </insert>
+
+        <insert tableName="roles">
+            <column name="name" value="ROLE_ADMIN"/>
+        </insert>
+
+        <insert tableName="shop">
+            <column name="name" value="VIP"/>
+            <column name="category" value="MiniGames"/>
+            <column name="description" value="VIP cheater"/>
+            <column name="price" value="100"/>
+            <column name="img" value="default.png"/>
+        </insert>
+        <insert tableName="shop">
+            <column name="name" value="VIP+"/>
+            <column name="category" value="MiniGames"/>
+            <column name="description" value="VIP+ cheater"/>
+            <column name="price" value="250"/>
+            <column name="img" value="default.png"/>
+        </insert>
+        <insert tableName="shop">
+            <column name="name" value="VIP"/>
+            <column name="category" value="SpaceX"/>
+            <column name="description" value="VIP cheater"/>
+            <column name="price" value="100"/>
+            <column name="img" value="default.png"/>
+        </insert>
+        <insert tableName="shop">
+            <column name="name" value="VIP+"/>
+            <column name="category" value="SpaceX"/>
+            <column name="description" value="VIP+ cheater"/>
+            <column name="price" value="250"/>
+            <column name="img" value="default.png"/>
+        </insert>
+    </changeSet>
+</databaseChangeLog>
