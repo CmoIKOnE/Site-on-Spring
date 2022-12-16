@@ -1,9 +1,8 @@
 package com.pzh.code.archyonix.dto;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.pzh.code.archyonix.model.Status;
 import lombok.Data;
-import com.pzh.code.archyonix.model.User;
+import com.pzh.code.archyonix.model.db1.User;
 
 @Data
 @JsonIgnoreProperties(ignoreUnknown = true)

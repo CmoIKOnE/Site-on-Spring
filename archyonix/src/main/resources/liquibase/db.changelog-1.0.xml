@@ -4,7 +4,7 @@
                         https://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.4.xsd">
 
 
-    <changeSet id="1.0.0" author="maxim.mamasanov">
+    <changeSet id="1.0.0" author="cmkN">
         <createTable tableName="users">
             <column name="id" type="BIGINT" autoIncrement="true">
                 <constraints primaryKey="true" nullable="false"/>
@@ -45,7 +45,7 @@
         </createTable>
     </changeSet>
 
-    <changeSet id="1.0.1" author="maxim.mamasanov">
+    <changeSet id="1.0.1" author="cmkN">
         <createTable tableName="roles">
             <column name="id" type="BIGINT" autoIncrement="true">
                 <constraints primaryKey="true" nullable="false"/>
@@ -69,17 +69,25 @@
         </createTable>
     </changeSet>
 
-    <changeSet id="1.0.2" author="maxim.mamasanov">
+    <changeSet id="1.0.2" author="cmkN">
         <createTable tableName="shop">
             <column name="id" type="BIGINT" autoIncrement="true">
                 <constraints primaryKey="true" nullable="false"/>
             </column>
 
-            <column name="category" type="VARCHAR(100)" defaultValue="category?">
+            <column name="server" type="VARCHAR(100)" defaultValue="server?">
                 <constraints nullable="false"/>
             </column>
 
             <column name="name" type="VARCHAR(100)" defaultValue="Name?">
+                <constraints nullable="false"/>
+            </column>
+
+            <column name="special_name" type="VARCHAR(100)" defaultValue="Special Name?">
+                <constraints nullable="false"/>
+            </column>
+
+            <column name="priority" type="INT" defaultValue="1">
                 <constraints nullable="false"/>
             </column>
 
@@ -97,7 +105,103 @@
         </createTable>
     </changeSet>
 
-    <changeSet id="2.0.1" author="maxim.mamasanov">
+    <changeSet id="1.0.3" author="cmkN">
+        <createTable tableName="history_deposit_rub">
+            <column name="id" type="BIGINT" autoIncrement="true">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+
+            <column name="username" type="VARCHAR(100)" defaultValue="Name?">
+                <constraints nullable="false"/>
+            </column>
+
+            <column name="rub" type="INT" defaultValue="0">
+                <constraints nullable="false"/>
+            </column>
+
+            <column name="date" type="TIMESTAMP" defaultValue="CURRENT_TIMESTAMP()">
+                <constraints nullable="false"/>
+            </column>
+
+            <column name="reason" type="VARCHAR(1024)" defaultValue="OK">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+
+    <changeSet id="1.0.4" author="cmkN">
+        <createTable tableName="history_shopping">
+            <column name="id" type="BIGINT" autoIncrement="true">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+
+            <column name="username" type="VARCHAR(100)" defaultValue="Name?">
+                <constraints nullable="false"/>
+            </column>
+
+            <column name="item" type="VARCHAR(100)" defaultValue="none">
+                <constraints nullable="false"/>
+            </column>
+
+            <column name="rub" type="INT" defaultValue="0">
+                <constraints nullable="false"/>
+            </column>
+
+            <column name="date" type="TIMESTAMP" defaultValue="CURRENT_TIMESTAMP()">
+                <constraints nullable="false"/>
+            </column>
+
+            <column name="reason" type="VARCHAR(1024)" defaultValue="OK">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+
+    <changeSet id="1.0.5" author="cmkN">
+        <createTable tableName="history_onix_to_server">
+            <column name="id" type="BIGINT" autoIncrement="true">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+
+            <column name="username" type="VARCHAR(100)" defaultValue="Name?">
+                <constraints nullable="false"/>
+            </column>
+
+            <column name="onix" type="INT" defaultValue="0">
+                <constraints nullable="false"/>
+            </column>
+
+            <column name="server" type="VARCHAR(100)" defaultValue="none">
+                <constraints nullable="false"/>
+            </column>
+
+            <column name="date" type="TIMESTAMP" defaultValue="CURRENT_TIMESTAMP()">
+                <constraints nullable="false"/>
+            </column>
+
+            <column name="reason" type="VARCHAR(1024)" defaultValue="OK">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+
+    <changeSet id="1.0.6" author="cmkN">
+        <createTable tableName="servers">
+            <column name="id" type="BIGINT" autoIncrement="true">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+
+            <column name="name" type="VARCHAR(100)" defaultValue="Name?">
+                <constraints nullable="false"/>
+            </column>
+
+            <column name="description" type="VARCHAR(100)" defaultValue="none">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+
+    <changeSet id="2.0.1" author="cmkN">
         <createTable tableName="user_roles">
             <column name="user_id" type="BIGINT">
             </column>
@@ -107,7 +211,7 @@
         </createTable>
     </changeSet>
 
-    <changeSet id="2.0.2" author="maxim.mamasanov">
+    <changeSet id="2.0.2" author="cmkN">
         <createTable tableName="user_votes">
             <column name="user_id" type="BIGINT">
             </column>
@@ -117,7 +221,7 @@
         </createTable>
     </changeSet>
 
-    <changeSet id="3.0.1" author="maxim.mamasanov">
+    <changeSet id="3.0.1" author="cmkN">
         <addForeignKeyConstraint baseColumnNames="user_id"
                                  baseTableName="user_votes"
                                  constraintName="fk_user_votes_user"
@@ -127,7 +231,7 @@
                                  referencedTableName="users"/>
     </changeSet>
 
-    <changeSet id="3.0.2" author="maxim.mamasanov">
+    <changeSet id="3.0.2" author="cmkN">
         <addForeignKeyConstraint baseColumnNames="user_id"
                                  baseTableName="user_roles"
                                  constraintName="fk_user_roles_user"
@@ -137,7 +241,7 @@
                                  referencedTableName="users"/>
     </changeSet>
 
-    <changeSet id="3.0.3" author="maxim.mamasanov">
+    <changeSet id="3.0.3" author="cmkN">
         <addForeignKeyConstraint baseColumnNames="role_id"
                                  baseTableName="user_roles"
                                  constraintName="fk_user_roles_roles"
@@ -147,7 +251,7 @@
                                  referencedTableName="roles"/>
     </changeSet>
 
-    <changeSet id="4.0.1" author="maxim.mamasanov">
+    <changeSet id="4.0.1" author="cmkN">
         <insert tableName="roles">
             <column name="name" value="ROLE_USER"/>
         </insert>
@@ -158,31 +262,47 @@
 
         <insert tableName="shop">
             <column name="name" value="VIP"/>
-            <column name="category" value="MiniGames"/>
+            <column name="special_name" value="vip"/>
+            <column name="priority" value="1"/>
+            <column name="server" value="MiniGames"/>
             <column name="description" value="VIP cheater"/>
             <column name="price" value="100"/>
             <column name="img" value="default.png"/>
         </insert>
         <insert tableName="shop">
             <column name="name" value="VIP+"/>
-            <column name="category" value="MiniGames"/>
+            <column name="special_name" value="vip_plus"/>
+            <column name="priority" value="2"/>
+            <column name="server" value="MiniGames"/>
             <column name="description" value="VIP+ cheater"/>
             <column name="price" value="250"/>
             <column name="img" value="default.png"/>
         </insert>
         <insert tableName="shop">
             <column name="name" value="VIP"/>
-            <column name="category" value="SpaceX"/>
+            <column name="special_name" value="vip"/>
+            <column name="priority" value="1"/>
+            <column name="server" value="SpaceX"/>
             <column name="description" value="VIP cheater"/>
             <column name="price" value="100"/>
             <column name="img" value="default.png"/>
         </insert>
         <insert tableName="shop">
             <column name="name" value="VIP+"/>
-            <column name="category" value="SpaceX"/>
+            <column name="special_name" value="vip_plus"/>
+            <column name="priority" value="2"/>
+            <column name="server" value="SpaceX"/>
             <column name="description" value="VIP+ cheater"/>
             <column name="price" value="250"/>
             <column name="img" value="default.png"/>
+        </insert>
+        <insert tableName="servers">
+            <column name="name" value="MiniGames"/>
+            <column name="description" value="none"/>
+        </insert>
+        <insert tableName="servers">
+            <column name="name" value="SpaceX"/>
+            <column name="description" value="none"/>
         </insert>
     </changeSet>
 </databaseChangeLog>

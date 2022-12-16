@@ -1,8 +1,8 @@
 package com.pzh.code.archyonix.security.jwt;
 
-import com.pzh.code.archyonix.model.Role;
-import com.pzh.code.archyonix.model.Status;
-import com.pzh.code.archyonix.model.User;
+import com.pzh.code.archyonix.model.db1.Role;
+import com.pzh.code.archyonix.model.db1.Status;
+import com.pzh.code.archyonix.model.db1.User;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 

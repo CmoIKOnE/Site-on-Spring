@@ -1,22 +1,27 @@
-package com.pzh.code.archyonix.service.impl;
+package com.pzh.code.archyonix.service.impl.db1;
 
+import com.pzh.code.archyonix.repository.db1.UserRepository;
+import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import com.pzh.code.archyonix.model.Role;
-import com.pzh.code.archyonix.model.Status;
-import com.pzh.code.archyonix.model.User;
-import com.pzh.code.archyonix.repository.RoleRepository;
-import com.pzh.code.archyonix.repository.UserRepository;
-import com.pzh.code.archyonix.service.UserService;
+import com.pzh.code.archyonix.model.db1.Role;
+import com.pzh.code.archyonix.model.db1.Status;
+import com.pzh.code.archyonix.model.db1.User;
+import com.pzh.code.archyonix.repository.db1.RoleRepository;
+import com.pzh.code.archyonix.service.db1.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Bean;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.ArrayList;
 import java.util.List;
 
 @Service
 @Slf4j
+@RequiredArgsConstructor
+@Transactional
 public class UserServiceImpl implements UserService {
 
     private final UserRepository userRepository;
@@ -45,6 +50,15 @@ public class UserServiceImpl implements UserService {
         log.info("IN register - user: {} successfully registered", registeredUser);
 
         return registeredUser;
+    }
+
+    @Override
+    public User save(User user) {
+        User savedUser = userRepository.save(user);
+
+        log.info("IN save - user: {} successfully saved", savedUser);
+
+        return savedUser;
     }
 
     @Override

@@ -1,10 +1,10 @@
 package com.pzh.code.archyonix.security;
 
 import lombok.extern.slf4j.Slf4j;
-import com.pzh.code.archyonix.model.User;
+import com.pzh.code.archyonix.model.db1.User;
 import com.pzh.code.archyonix.security.jwt.JwtUser;
 import com.pzh.code.archyonix.security.jwt.JwtUserFactory;
-import com.pzh.code.archyonix.service.UserService;
+import com.pzh.code.archyonix.service.db1.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;

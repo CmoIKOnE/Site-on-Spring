@@ -1,4 +1,4 @@
-package com.pzh.code.archyonix.service;
+package com.pzh.code.archyonix.service.db1;
 
 import com.pzh.code.archyonix.shop.Shop;
 
@@ -8,7 +8,9 @@ public interface ShopService {
 
     List<Shop> getAll();
 
-    Shop findByCategory(String category);
+    List<Shop> findAllByServer(String server);
+
+    Shop findById(Long id);
 
     void delete(Long id);
 }

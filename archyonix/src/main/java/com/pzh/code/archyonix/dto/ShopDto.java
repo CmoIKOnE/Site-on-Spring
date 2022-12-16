@@ -1,7 +1,6 @@
 package com.pzh.code.archyonix.dto;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.pzh.code.archyonix.model.User;
 import com.pzh.code.archyonix.shop.Shop;
 import lombok.Data;
 
@@ -11,7 +10,9 @@ public class ShopDto {
 
     private Long id;
     private String name;
-    private String category;
+    private String special_name;
+    private Integer priority;
+    private String server;
     private String description;
     private Integer price;
     private String img;
@@ -20,7 +21,9 @@ public class ShopDto {
         Shop shop = new Shop();
         shop.setId(id);
         shop.setName(name);
-        shop.setCategory(category);
+        shop.setSpecial_name(special_name);
+        shop.setPriority(priority);
+        shop.setServer(server);
         shop.setDescription(description);
         shop.setPrice(price);
         shop.setImg(img);
@@ -32,7 +35,9 @@ public class ShopDto {
         ShopDto shopDto = new ShopDto();
         shopDto.setId(shop.getId());
         shopDto.setName(shop.getName());
-        shopDto.setCategory(shop.getCategory());
+        shopDto.setSpecial_name(shop.getSpecial_name());
+        shopDto.setPriority(shop.getPriority());
+        shopDto.setServer(shop.getServer());
         shopDto.setDescription(shop.getDescription());
         shopDto.setPrice(shop.getPrice());
         shopDto.setImg(shop.getImg());

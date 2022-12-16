@@ -1,5 +1,4 @@
-package com.pzh.code.archyonix.model;
-
+package com.pzh.code.archyonix.model.db1;
 
 import lombok.Data;
 

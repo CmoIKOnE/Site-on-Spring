@@ -1,8 +1,8 @@
 package com.pzh.code.archyonix.rest;
 
 import com.pzh.code.archyonix.dto.AdminUserDto;
-import com.pzh.code.archyonix.model.User;
-import com.pzh.code.archyonix.service.UserService;
+import com.pzh.code.archyonix.model.db1.User;
+import com.pzh.code.archyonix.service.db1.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

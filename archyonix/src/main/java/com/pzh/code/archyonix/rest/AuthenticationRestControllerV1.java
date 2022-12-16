@@ -2,10 +2,9 @@ package com.pzh.code.archyonix.rest;
 
 import com.pzh.code.archyonix.dto.AuthenticationRequestDto;
 import com.pzh.code.archyonix.dto.RegisterRequestDto;
-import com.pzh.code.archyonix.model.User;
-import com.pzh.code.archyonix.repository.UserRepository;
+import com.pzh.code.archyonix.model.db1.User;
 import com.pzh.code.archyonix.security.jwt.JwtTokenProvider;
-import com.pzh.code.archyonix.service.UserService;
+import com.pzh.code.archyonix.service.db1.UserService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -34,7 +33,7 @@ public class AuthenticationRestControllerV1 {
     private final UserService userService;
 
     @Autowired
-    public AuthenticationRestControllerV1(AuthenticationManager authenticationManager, JwtTokenProvider jwtTokenProvider, UserService userService, UserRepository userRepository) {
+    public AuthenticationRestControllerV1(AuthenticationManager authenticationManager, JwtTokenProvider jwtTokenProvider, UserService userService) {
         this.authenticationManager = authenticationManager;
         this.jwtTokenProvider = jwtTokenProvider;
         this.userService = userService;

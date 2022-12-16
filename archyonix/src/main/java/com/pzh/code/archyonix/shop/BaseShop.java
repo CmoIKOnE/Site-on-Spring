@@ -15,8 +15,14 @@ public class BaseShop {
     @Column(name = "name")
     private String name;
 
-    @Column(name = "category")
-    private String category;
+    @Column(name = "special_name")
+    private String special_name;
+
+    @Column(name = "priority")
+    private Integer priority;
+
+    @Column(name = "server")
+    private String server;
 
     @Column(name = "description")
     private String description;

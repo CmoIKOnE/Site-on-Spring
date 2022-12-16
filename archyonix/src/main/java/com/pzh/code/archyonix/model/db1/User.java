@@ -1,12 +1,11 @@
-package com.pzh.code.archyonix.model;
+package com.pzh.code.archyonix.model.db1;
 
 import lombok.Data;
-
 import javax.persistence.*;
 import java.util.List;
 
 @Entity
-@Table(name = "users")
+@Table(schema = "cb41477_archyon", name = "users")
 @Data
 public class User extends BaseEntity {
 
